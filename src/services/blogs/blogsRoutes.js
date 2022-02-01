@@ -10,7 +10,7 @@ import path from "path";
 const upload = multer({
   fileFilter: (req, file, callback) => {
     if (!file.mimetype.startsWith("image")) {
-      // image/jpeg
+   
       return callback(createHttpError(400, "Only image types are allowed!"));
     }
     return callback(null, true);
