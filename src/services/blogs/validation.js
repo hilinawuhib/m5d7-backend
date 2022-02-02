@@ -2,7 +2,7 @@ import { body } from "express-validator";
 
 const categories = ["TECH", "SPORTS", "HEALTH"];
 
-const blogValidationMiddlewares = [
+const  newBlogValidation  = [
   body("title")
     .exists()
     .withMessage("Title is required")
@@ -36,4 +36,4 @@ const blogValidationMiddlewares = [
     .withMessage("Author avatar is required"),
 ];
 
-export default blogValidationMiddlewares;
+export default  newBlogValidation ;
