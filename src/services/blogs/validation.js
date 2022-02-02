@@ -1,39 +1,45 @@
-import { body } from "express-validator";
+// import { body } from "express-validator";
 
-const categories = ["TECH", "SPORTS", "HEALTH"];
+// const categories = ["TECH", "SPORTS", "HEALTH"];
 
-const  newBlogValidation  = [
-  body("title")
-    .exists()
-    .withMessage("Title is required")
-    .isString()
-    .withMessage("Title must be string")
-    .withMessage("Title has to be min 20 and max 30"),
-  body("content")
-    .exists()
-    .isString()
-    .withMessage("Content is required and must be string"),
-  body("category")
-    .exists()
-    .isString()
-    .withMessage("Category is required and must be string")
-    .custom((value, { req }) => {
-      if (!categories.includes(value)) {
-        throw new Error(
-          "Invalid category, category must be one of ",
-          categories.join(",")
-        );
-      }
-      return true;
-    }),
-  body("author.name")
-    .exists()
-    .isString()
-    .withMessage("Author name is required"),
-  body("author.avatar")
-    .exists()
-    .isString()
-    .withMessage("Author avatar is required"),
-];
+// const  newBlogValidation  = [
+//   body("title")
+//     .exists()
+//     .withMessage("Title is required")
+//     .isString()
+//     .withMessage("Title must be string")
+//     .withMessage("Title has to be min 20 and max 30"),
+//   body("content")
+//     .exists()
+//     .isString()
+//     .withMessage("Content is required and must be string"),
+//   body("category")
+//     .exists()
+//     .isString()
+//     .withMessage("Category is required and must be string")
+//     .custom((value, { req }) => {
+//       if (!categories.includes(value)) {
+//         throw new Error(
+//           "Invalid category, category must be one of ",
+//           categories.join(",")
+//         );
+//       }
+//       return true;
+//     }),
+//   body("author.name")
+//     .exists()
+//     .isString()
+//     .withMessage("Author name is required"),
+//   body("author.avatar")
+//     .exists()
+//     .isString()
+//     .withMessage("Author avatar is required"),
+// ];
 
-export default  newBlogValidation ;
+// export default  newBlogValidation ;
+import { body } from "express-validator"
+
+export const newBlogValidation = [
+  body("title").exists().withMessage("Title is a mandatory field!"),
+  body("category").exists().withMessage("Category is a mandatory field!"),
+]

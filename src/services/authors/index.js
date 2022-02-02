@@ -2,13 +2,13 @@ import express from "express"
 import uniqid from "uniqid"
 import createHttpError from "http-errors"
 import { validationResult } from "express-validator"
-import { newAuthorValidation } from "./validation.js"
+import { newAuthorValidations } from "./validation.js"
 import { getAuthors, writeAuthors } from "../../lib/fs-tools.js"
 
 const authorsRouter = express.Router()
 
-// 1.
-authorsRouter.post("/", newAuthorValidation, async (req, res, next) => {
+
+authorsRouter.post("/", newAuthorValidations, async (req, res, next) => {
   try {
     const errorsList = validationResult(req)
     if (errorsList.isEmpty()) {
@@ -32,7 +32,7 @@ authorsRouter.post("/", newAuthorValidation, async (req, res, next) => {
   }
 })
 
-// 2.
+
 authorsRouter.get("/", async (req, res, next) => {
   try {
 
@@ -50,7 +50,7 @@ authorsRouter.get("/", async (req, res, next) => {
   }
 })
 
-// 3.
+
 authorsRouter.get("/:authorId", async (req, res, next) => {
   try {
     const authorId = req.params.authorId
@@ -68,7 +68,7 @@ authorsRouter.get("/:authorId", async (req, res, next) => {
   }
 })
 
-// 4.
+
 authorsRouter.put("/:authorId", async (req, res, next) => {
   try {
     const authorId = req.params.authorId
@@ -108,6 +108,4 @@ authorsRouter.delete("/:authorId", async (req, res, next) => {
   }
 })
 
-
-
-export default booksRouter
+export default authorsRouter;

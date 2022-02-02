@@ -15,4 +15,5 @@ export const writeBlogs = content => writeJSON(blogsJSONPath, content)
 export const getAuthors = () => readJSON(authorsJSONPath)
 export const writeAuthors = content => writeJSON(authorsJSONPath, content)
 
-export const saveUsersAvatars = (filename, contentAsABuffer) => writeFile(join(usersPublicFolderPath, filename), contentAsABuffer)
+export const saveAuthorsAvatars = (filename, contentAsABuffer) => writeFile(join(usersPublicFolderPath, filename), contentAsABuffer)
+export const getBlogsReadableStream = () => createReadStream(blogsJSONPath)

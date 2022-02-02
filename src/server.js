@@ -47,17 +47,9 @@ server.use(
     },
   })
 )
-
-
-
-
-
 server.use(express.static(publicFolderPath))
 server.use(loggerMiddleware)
 server.use(express.json())
-
-
-
 server.use("/authors", authorsRouter)
 server.use("/blogs", blogsRouter)
 server.use("/files", filesRouter)

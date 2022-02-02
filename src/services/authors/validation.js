@@ -1,15 +1,6 @@
-import { body } from "express-validator";
+import { body } from "express-validator"
 
-const newAuthorValidation = [
-  body("name")
-    .exists()
-    .withMessage("Name is required")
-    .isString(),
-    
-  body("lastName")
-    .exists()
-    .isString()
-   
-  ];
-
-export default newAuthorValidation ;
+export const newAuthorValidations = [
+  body("title").exists().withMessage("Title is a mandatory field!"),
+  body("category").exists().withMessage("Category is a mandatory field!"),
+]
