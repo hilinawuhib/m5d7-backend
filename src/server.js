@@ -10,6 +10,7 @@ import path from "path";
 const publicPath = path.join(process.cwd(), "public");
 
 const server = express();
+const { PORT } = process.env;
 const whiteListedOrigins = [process.env.FE_DEV_URL, process.env.FE_PROD_URL]
 
 console.log("Permitted origins:")
