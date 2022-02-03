@@ -20,8 +20,7 @@ authorsRouter.post("/", newAuthorValidations, async (req, res, next) => {
 
       authorsArray.push(newAuthor)
 
-
-      await writeAuthors(authorsArray)
+     await writeAuthors(authorsArray)
 
       res.status(201).send({ id: newAuthor.id })
     } else {

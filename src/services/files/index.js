@@ -83,5 +83,23 @@ filesRouter.get("/downloadPDF", (req, res, next) => {
     next(error)
   }
 })
+filesRouter.get("/downloadCSV", (req, res, next) => {
+  try {
+    // SOURCE (books.json) --> TRANSFORM (csv) --> DESTINATION (res)
+
+    res.setHeader("Content-Disposition", "attachment; filename=blogs.csv")
+
+    const source = getBlogsReadableStream()
+    const transform = new json2csv.Transform({ fields: ["asin", "title", "price", "category"] })
+    const destination = res
+
+    pipeline(source, transform, destination, err => {
+      if (err) next(err)
+    })
+  } catch (error) {
+    next(error)
+  }
+})
+
 
 export default filesRouter
